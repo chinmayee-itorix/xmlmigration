@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="CountryInfoService">
+    <Description>CountryInfoService</Description>
+	<FaultRules>
+	</FaultRules>
+	<DefaultFaultRule>
+            <Step>
+                <Name>SF-PostflowResponseTargetLogAggregator</Name>
+            </Step>
+    	<AlwaysEnforce>true</AlwaysEnforce>
+	</DefaultFaultRule>
+	<PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>SF-PreflowRequestTargetLogAggregator</Name>
+            </Step>
+            <Step>
+                <Name>cf-Remove-Proxy-Auth-Header</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+	<Flows>
+        <Flow name="ListOfContinentsByName">
+        	<Condition>(targetOperation = &quot;ListOfContinentsByName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfContinentsByCode">
+        	<Condition>(targetOperation = &quot;ListOfContinentsByCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfCurrenciesByName">
+        	<Condition>(targetOperation = &quot;ListOfCurrenciesByName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfCurrenciesByCode">
+        	<Condition>(targetOperation = &quot;ListOfCurrenciesByCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CurrencyName">
+        	<Condition>(targetOperation = &quot;CurrencyName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfCountryNamesByCode">
+        	<Condition>(targetOperation = &quot;ListOfCountryNamesByCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfCountryNamesByName">
+        	<Condition>(targetOperation = &quot;ListOfCountryNamesByName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfCountryNamesGroupedByContinent">
+        	<Condition>(targetOperation = &quot;ListOfCountryNamesGroupedByContinent&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountryName">
+        	<Condition>(targetOperation = &quot;CountryName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountryISOCode">
+        	<Condition>(targetOperation = &quot;CountryISOCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CapitalCity">
+        	<Condition>(targetOperation = &quot;CapitalCity&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountryCurrency">
+        	<Condition>(targetOperation = &quot;CountryCurrency&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountryFlag">
+        	<Condition>(targetOperation = &quot;CountryFlag&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountryIntPhoneCode">
+        	<Condition>(targetOperation = &quot;CountryIntPhoneCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="FullCountryInfo">
+        	<Condition>(targetOperation = &quot;FullCountryInfo&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="FullCountryInfoAllCountries">
+        	<Condition>(targetOperation = &quot;FullCountryInfoAllCountries&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="CountriesUsingCurrency">
+        	<Condition>(targetOperation = &quot;CountriesUsingCurrency&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfLanguagesByName">
+        	<Condition>(targetOperation = &quot;ListOfLanguagesByName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="ListOfLanguagesByCode">
+        	<Condition>(targetOperation = &quot;ListOfLanguagesByCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="LanguageName">
+        	<Condition>(targetOperation = &quot;LanguageName&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+        <Flow name="LanguageISOCode">
+        	<Condition>(targetOperation = &quot;LanguageISOCode&quot;)</Condition>
+			<Request>
+			</Request>   
+			<Response>
+			</Response>
+        </Flow>
+	</Flows>
+    <PostFlow name="PostFlow">
+        <Request>
+            <Step>
+                <Name>SF-PostflowRequestTargetLogAggregator</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <Name>SF-PostflowResponseTargetLogAggregator</Name>
+            </Step>
+        </Response>
+    </PostFlow>
+    <HTTPTargetConnection>
+    	<LoadBalancer>
+            <Server name="Tonik-CountryInfoService">
+                <IsEnabled>true</IsEnabled>
+            </Server>
+        </LoadBalancer>
+        <Path>{targetBasePath}</Path>
+    </HTTPTargetConnection>
+</TargetEndpoint>
